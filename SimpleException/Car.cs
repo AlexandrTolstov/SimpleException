@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace SimpleException
 {
@@ -33,9 +34,14 @@ namespace SimpleException
                 CurrentSpeed += delta;
                 if(CurrentSpeed > MaxSpeed)
                 {
-                    Console.WriteLine("{0} has overheated!", PetName);
                     CurrentSpeed = 0;
                     carIsDead = true;
+
+                    Exception ex = new Exception($"{PetName} has overheated!");
+                    ex.HelpLink = "http://www.CarsRUs.com";
+                    ex.Data.Add("TimeStamp", $"The car exploded at {DateTime.Now}");
+                    ex.Data.Add("Cause", "You have a lead foot.");
+                    throw ex;
                 }
                 else
                     Console.WriteLine("=> CurrentSpeed = {0}", CurrentSpeed);
