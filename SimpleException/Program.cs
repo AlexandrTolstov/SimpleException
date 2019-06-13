@@ -38,6 +38,8 @@ namespace SimpleException
                     Console.WriteLine("-> {0}: {1}", de.Key, de.Value);
                 }
             }
+            NullReferenceException nullRefEx = new NullReferenceException();
+            Console.WriteLine("NullReferenceException is-a SystemException? : {0}", nullRefEx is SystemException);
             Console.WriteLine("\n***** Out of exception logic *****");
             Console.ReadLine();
         }
